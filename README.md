@@ -1,1 +1,1 @@
-# mysql-lab
+mysql 5.6
