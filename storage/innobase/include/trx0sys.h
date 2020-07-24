@@ -645,6 +645,7 @@ struct trx_sys_t{
 					mysql_trx_list may additionally contain
 					transactions that have not yet been
 					started in InnoDB. */
+					// 所有回滚段都记录在这里 大小为 128
 	trx_rseg_t*	const rseg_array[TRX_SYS_N_RSEGS];
 					/*!< Pointer array to rollback
 					segments; NULL if slot not in use;

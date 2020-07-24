@@ -2263,7 +2263,7 @@ static MYSQL_SOCKET create_socket(const struct addrinfo *addrinfo_list,
   return MYSQL_INVALID_SOCKET;
 }
 
-
+// 初始化网络模块
 static void network_init(void)
 {
 #ifdef HAVE_SYS_UN_H
@@ -5370,6 +5370,7 @@ int mysqld_main(int argc, char **argv)
     Perform basic logger initialization logger. Should be called after
     MY_INIT, as it initializes mutexes. Log tables are inited later.
   */
+  // 初始化日志功能
   logger.init_base();
 
   if (ho_error)
@@ -5625,7 +5626,7 @@ int mysqld_main(int argc, char **argv)
     udf_init();
 #endif
   }
-
+  // 初始化mysql中的status变量
   init_status_vars();
   /* If running with bootstrap, do not start replication. */
   if (opt_bootstrap)
@@ -6241,6 +6242,7 @@ inline void kill_broken_server()
 
 #ifndef EMBEDDED_LIBRARY
 
+// 主处理函数 处理新的连接并创建新的线程处理
 void handle_connections_sockets()
 {
   MYSQL_SOCKET sock= mysql_socket_invalid();

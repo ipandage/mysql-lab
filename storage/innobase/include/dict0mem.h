@@ -560,6 +560,7 @@ struct zip_pad_info_t {
 
 /** Data structure for an index.  Most fields will be
 initialized to 0, NULL or FALSE in dict_mem_index_create(). */
+// 索引的数据结构
 struct dict_index_t{
 	index_id_t	id;	/*!< id of the index */
 	mem_heap_t*	heap;	/*!< memory heap */
@@ -576,6 +577,7 @@ struct dict_index_t{
 				DICT_UNIVERSAL, DICT_IBUF, DICT_CORRUPT) */
 #define MAX_KEY_LENGTH_BITS 12
 	unsigned	trx_id_offset:MAX_KEY_LENGTH_BITS;
+	// trx id 列的位置，在聚集索引记录中
 				/*!< position of the trx id column
 				in a clustered index record, if the fields
 				before it are known to be of a fixed size,

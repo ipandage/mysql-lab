@@ -1179,6 +1179,14 @@ dict_table_open_on_name(
 
 /**********************************************************************//**
 Adds system columns to a table object. */
+
+/**
+ * 添加三个隐藏字段  DATA_ROW_ID， DATA_TRX_ID， DATA_ROLL_PTR
+ * DATA_ROW_ID 如果没有显示定义主键或者没有唯一索引，mysql会自动创建一个6字节的rowid存在记录中
+ * DATA_TRX_ID 事务ID
+ * DATA_ROLL_PTR 回滚段指针
+ *
+ * */
 UNIV_INTERN
 void
 dict_table_add_system_columns(

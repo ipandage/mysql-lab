@@ -818,7 +818,7 @@ public:
   enum enum_mark_columns mark_used_columns;
 
   LEX_STRING name; /* name for named prepared statements */
-  LEX *lex;                                     // parse tree descriptor
+  LEX *lex;   // parse tree descriptor 语法树描述符
   /*
     Points to the query associated with this statement. It's const, but
     we need to declare it char * because all table handlers are written
@@ -2144,20 +2144,20 @@ public:
 #ifdef HAVE_QUERY_CACHE
   Query_cache_tls query_cache_tls;
 #endif
-  NET	  net;				// client connection descriptor
+  NET	  net;				// client connection descriptor 客户链接描述符
   /** Aditional network instrumentation for the server only. */
   NET_SERVER m_net_server_extension;
-  Protocol *protocol;			// Current protocol
-  Protocol_text   protocol_text;	// Normal protocol
-  Protocol_binary protocol_binary;	// Binary protocol
-  HASH    user_vars;			// hash for user variables
-  String  packet;			// dynamic buffer for network I/O
-  String  convert_buffer;               // buffer for charset conversions
-  struct  rand_struct rand;		// used for authentication
+  Protocol *protocol;			// Current protocol 当前的协议
+  Protocol_text   protocol_text;	// Normal protocol 普通协议
+  Protocol_binary protocol_binary;	// Binary protocol 二进制协议
+  HASH    user_vars;			// hash for user variables 用户变量的hash值
+  String  packet;			// dynamic buffer for network I/O 网络IO用的缓存
+  String  convert_buffer;               // buffer for charset conversions 字符集转换用的缓存
+  struct  rand_struct rand;		// used for authentication 客户端socket地址
   struct  system_variables variables;	// Changeable local variables
   struct  system_status_var status_var; // Per thread statistic vars
   struct  system_status_var *initial_status_var; /* used by show status */
-  THR_LOCK_INFO lock_info;              // Locking info of this thread
+  THR_LOCK_INFO lock_info;              // Locking info of this thread 当前线程的锁信息
   /**
     Protects THD data accessed from other threads:
     - thd->query and thd->query_length (used by SHOW ENGINE

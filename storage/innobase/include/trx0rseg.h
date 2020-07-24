@@ -151,6 +151,7 @@ trx_rseg_get_n_undo_tablespaces(
 #define TRX_RSEG_MAX_N_TRXS	(TRX_RSEG_N_SLOTS / 2)
 
 /* The rollback segment memory object */
+// 回滚段内存对象
 struct trx_rseg_t{
 	/*--------------------------------------------------------*/
 	ulint		id;	/*!< rollback segment id == the index of
@@ -167,13 +168,16 @@ struct trx_rseg_t{
 	ulint		curr_size;/* current size in pages */
 	/*--------------------------------------------------------*/
 	/* Fields for update undo logs */
+	// 更新的回滚日志列表
 	UT_LIST_BASE_NODE_T(trx_undo_t) update_undo_list;
 					/* List of update undo logs */
 	UT_LIST_BASE_NODE_T(trx_undo_t) update_undo_cached;
+	// 更新的恢复日志缓存，以便快速恢复
 					/* List of update undo log segments
 					cached for fast reuse */
 	/*--------------------------------------------------------*/
 	/* Fields for insert undo logs */
+    // 插入的回滚日志列表
 	UT_LIST_BASE_NODE_T(trx_undo_t) insert_undo_list;
 					/* List of insert undo logs */
 	UT_LIST_BASE_NODE_T(trx_undo_t) insert_undo_cached;

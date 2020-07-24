@@ -121,7 +121,7 @@ read_cursor_set_for_mysql(
 
 /** Read view lists the trx ids of those transactions for which a consistent
 read should not see the modifications to the database. */
-
+// 一致性视图
 struct read_view_t{
 	ulint		type;	/*!< VIEW_NORMAL, VIEW_HIGH_GRANULARITY */
 	undo_no_t	undo_no;/*!< 0 or if type is
@@ -135,10 +135,12 @@ struct read_view_t{
 				can be removed in purge if not needed by other
 				views */
 	trx_id_t	low_limit_id;
+	// 高水位线，大于等于这个值的将不能被看到
 				/*!< The read should not see any transaction
 				with trx id >= this value. In other words,
 				this is the "high water mark". */
 	trx_id_t	up_limit_id;
+	// 低水位线，小于这个值的所有 trx_ids 将被看到
 				/*!< The read should see all trx ids which
 				are strictly smaller (<) than this value.
 				In other words,

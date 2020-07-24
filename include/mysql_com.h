@@ -315,8 +315,8 @@ typedef struct st_vio Vio;
 
 typedef struct st_net {
 #if !defined(CHECK_EMBEDDED_DIFFERENCES) || !defined(EMBEDDED_LIBRARY)
-  Vio *vio;
-  unsigned char *buff,*buff_end,*write_pos,*read_pos;
+  Vio *vio; // 底层的网络IO socket描述符
+  unsigned char *buff,*buff_end,*write_pos,*read_pos; // 缓存相关
   my_socket fd;					/* For Perl DBI/dbd */
   /*
     The following variable is set if we are doing several queries in one

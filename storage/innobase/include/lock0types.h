@@ -32,8 +32,8 @@ struct lock_sys_t;
 
 /* Basic lock modes */
 enum lock_mode {
-	LOCK_IS = 0,	/* intention shared */
-	LOCK_IX,	/* intention exclusive */
+	LOCK_IS = 0,	/* intention shared */ // 表级锁，意向共享锁。将要在表上加共享锁
+	LOCK_IX,	/* intention exclusive */ // 表级锁，意向排它锁。将要在表上加排它锁
 	LOCK_S,		/* shared */
 	LOCK_X,		/* exclusive */
 	LOCK_AUTO_INC,	/* locks the auto-inc counter of a table

@@ -3007,6 +3007,8 @@ the recovery and free the resources used in it.
 @return	error code or DB_SUCCESS */
 UNIV_INTERN
 dberr_t
+
+// 从检查点开始恢复数据
 recv_recovery_from_checkpoint_start_func(
 /*=====================================*/
 #ifdef UNIV_LOG_ARCHIVE
@@ -3852,6 +3854,7 @@ ask_again:
 
 /********************************************************//**
 Recovers from archived log files, and also from log files, if they exist.
+// 从归档日志文件恢复数据
 @return	error code or DB_SUCCESS */
 UNIV_INTERN
 ulint
@@ -3970,6 +3973,7 @@ recv_recovery_from_archive_start(
 Completes recovery from archive. */
 UNIV_INTERN
 void
+// 结束从归档日志中的数据恢复
 recv_recovery_from_archive_finish(void)
 /*===================================*/
 {

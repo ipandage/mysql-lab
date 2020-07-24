@@ -1539,6 +1539,7 @@ trx_undo_mem_init_for_reuse(
 
 /********************************************************************//**
 Frees an undo log memory copy. */
+// 释放undo log 内存拷贝
 UNIV_INTERN
 void
 trx_undo_mem_free(
@@ -1753,6 +1754,7 @@ undo log reused.
 @return DB_SUCCESS if undo log assign successful, possible error codes
 are: DB_TOO_MANY_CONCURRENT_TRXS DB_OUT_OF_FILE_SPACE DB_READ_ONLY
 DB_OUT_OF_MEMORY */
+// 为事务分配撤消日志
 UNIV_INTERN
 dberr_t
 trx_undo_assign_undo(
@@ -1820,6 +1822,7 @@ func_exit:
 /******************************************************************//**
 Sets the state of the undo log segment at a transaction finish.
 @return	undo log segment header page, x-latched */
+// 设置事务完成时撤消日志段的状态
 UNIV_INTERN
 page_t*
 trx_undo_set_state_at_finish(
@@ -1918,6 +1921,8 @@ trx_undo_set_state_at_prepare(
 Adds the update undo log header as the first in the history list, and
 frees the memory object, or puts it to the list of cached update undo log
 segments. */
+// 将update undo log头添加为历史记录列表中的第一个，然后
+// 释放内存对象，或将其放入缓存的更新撤消日志列表中
 UNIV_INTERN
 void
 trx_undo_update_cleanup(

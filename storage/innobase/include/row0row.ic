@@ -57,6 +57,7 @@ row_get_trx_id_offset(
 /*********************************************************************//**
 Reads the trx id field from a clustered index record.
 @return	value of the field */
+// 从聚集索引记录中读取trx id字段
 UNIV_INLINE
 trx_id_t
 row_get_rec_trx_id(

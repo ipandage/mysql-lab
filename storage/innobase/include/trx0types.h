@@ -78,6 +78,7 @@ struct trx_sys_t;
 /** Signal */
 struct trx_sig_t;
 /** Rollback segment */
+// 回滚段 维护回滚相关信息
 struct trx_rseg_t;
 /** Transaction undo log */
 struct trx_undo_t;

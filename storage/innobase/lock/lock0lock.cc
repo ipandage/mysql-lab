@@ -542,8 +542,9 @@ lock_clust_rec_cons_read_sees(
 	/* NOTE that we call this function while holding the search
 	system latch. */
 
+	// 从当前扫描的行中获取其最后修改的版本trx_id(事务id)
 	trx_id = row_get_rec_trx_id(rec, index, offsets);
-
+    // 通过(一致性快照视图和事务id)决定看到的行快照
 	return(read_view_sees_trx_id(view, trx_id));
 }
 

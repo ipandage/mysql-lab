@@ -147,6 +147,7 @@ Adds the node as the first element in a two-way linked list.
 @param NAME	list name
 @param LIST	the base node (not a pointer to it)
 @param ELEM	the element to add */
+// 将节点添加为双向链接列表中的第一个元素
 #define UT_LIST_ADD_FIRST(NAME, LIST, ELEM)	\
 	ut_list_prepend(LIST, *ELEM, IB_OFFSETOF(ELEM, NAME))
 

@@ -129,6 +129,7 @@ pthread_handler_t handle_manager(void *arg MY_ATTRIBUTE((unused)))
 
 
 /* Start handle manager thread */
+// 创建manager线程
 void start_handle_manager()
 {
   DBUG_ENTER("start_handle_manager");

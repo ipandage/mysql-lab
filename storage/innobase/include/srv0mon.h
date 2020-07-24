@@ -257,6 +257,7 @@ enum monitor_id_t {
 	MONITOR_OVLD_OS_LOG_PENDING_WRITES,
 
 	/* Transaction related counters */
+	// 事务相关计数器
 	MONITOR_MODULE_TRX,
 	MONITOR_TRX_RW_COMMIT,
 	MONITOR_TRX_RO_COMMIT,

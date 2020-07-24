@@ -422,7 +422,7 @@ struct trx_undo_t{
 	ulint		type;		/*!< TRX_UNDO_INSERT or
 					TRX_UNDO_UPDATE */
 	ulint		state;		/*!< state of the corresponding undo log
-					segment */
+					segment */ // 撤销日志的状态分段
 	ibool		del_marks;	/*!< relevant only in an update undo
 					log: this is TRUE if the transaction may
 					have delete marked records, because of

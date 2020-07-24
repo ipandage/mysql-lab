@@ -79,6 +79,7 @@ read_view_list_validate(void)
 /*********************************************************************//**
 Checks if a read view sees the specified transaction.
 @return	true if sees */
+// 判断行版本可见性
 UNIV_INLINE
 bool
 read_view_sees_trx_id(
@@ -86,10 +87,11 @@ read_view_sees_trx_id(
 	const read_view_t*	view,	/*!< in: read view */
 	trx_id_t		trx_id)	/*!< in: trx id */
 {
-	if (trx_id < view->up_limit_id) {
+
+	if (trx_id < view->up_limit_id) {  // trx_id < view->up_limit_id 对于当前记录一定可见
 
 		return(true);
-	} else if (trx_id >= view->low_limit_id) {
+	} else if (trx_id >= view->low_limit_id) {  // trx_id < view->up_limit_id 对于当前记录一定不可见
 
 		return(false);
 	} else {
@@ -98,6 +100,8 @@ read_view_sees_trx_id(
 
 		ut_a(view->n_trx_ids > 0);
 
+		// 如果trx_id落在[up_limit_id, low_limit_id)，需要在活跃读写事务数组查找trx_id是否存在，
+		// 如果存在，记录对于当前read view是不可见的。
 		do {
 			ulint		mid	= (lower + upper) >> 1;
 			trx_id_t	mid_id	= view->trx_ids[mid];

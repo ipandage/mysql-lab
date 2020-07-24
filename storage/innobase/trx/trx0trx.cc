@@ -1110,15 +1110,17 @@ trx_flush_log_if_needed_low(
 {
 	switch (srv_flush_log_at_trx_commit) {
 	case 0:
-		/* Do nothing */
+		/* Do nothing */ // 事务提交不写redo log
 		break;
 	case 1:
 		/* Write the log and optionally flush it to disk */
+		// 事务提交写log并flush磁盘
 		log_write_up_to(lsn, LOG_WAIT_ONE_GROUP,
 				srv_unix_file_flush_method != SRV_UNIX_NOSYNC);
 		break;
 	case 2:
 		/* Write the log but do not flush it to disk */
+		// 只write到redo log
 		log_write_up_to(lsn, LOG_WAIT_ONE_GROUP, FALSE);
 
 		break;

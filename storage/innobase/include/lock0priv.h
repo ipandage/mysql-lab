@@ -50,8 +50,11 @@ struct lock_table_t {
 
 /** Record lock for a page */
 struct lock_rec_t {
+    // 表空间编号
 	ulint	space;			/*!< space id */
+    // 数据页编号
 	ulint	page_no;		/*!< page number */
+    // 数据页包含的记录
 	ulint	n_bits;			/*!< number of bits in the lock
 					bitmap; NOTE: the lock bitmap is
 					placed immediately after the

@@ -1133,6 +1133,7 @@ row_undo_mod(
 	/* Skip all corrupted secondary index */
 	dict_table_skip_corrupt_index(node->index);
 
+	// 回滚二级索引记录 row_undo_mod_upd_exist_sec，row_undo_mod_del_mark_sec，row_undo_mod_upd_del_sec
 	switch (node->rec_type) {
 	case TRX_UNDO_UPD_EXIST_REC:
 		err = row_undo_mod_upd_exist_sec(node, thr);
@@ -1149,7 +1150,7 @@ row_undo_mod(
 	}
 
 	if (err == DB_SUCCESS) {
-
+        // 回滚聚集索引记录
 		err = row_undo_mod_clust(node, thr);
 	}
 

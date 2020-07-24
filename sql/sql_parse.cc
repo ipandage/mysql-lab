@@ -2280,7 +2280,7 @@ err:
   @retval
     TRUE        Error
 */
-
+// 执行指令
 int
 mysql_execute_command(THD *thd)
 {
@@ -5033,6 +5033,8 @@ finish:
     {
       /* If commit fails, we should be able to reset the OK status. */
       thd->get_stmt_da()->set_overwrite_status(true);
+
+
       trans_commit_stmt(thd);
       thd->get_stmt_da()->set_overwrite_status(false);
     }

@@ -946,9 +946,9 @@ struct trx_t{
 					transaction, or NULL if not assigned
 					yet */
 	trx_undo_t*	insert_undo;	/*!< pointer to the insert undo log, or
-					NULL if no inserts performed yet */
+					NULL if no inserts performed yet */ // insert 恢复日志的指针
 	trx_undo_t*	update_undo;	/*!< pointer to the update undo log, or
-					NULL if no update performed yet */
+					NULL if no update performed yet */ // update 恢复日志的指针
 	undo_no_t	roll_limit;	/*!< least undo number to undo during
 					a rollback */
 	ulint		pages_undone;	/*!< number of undo log pages undone
