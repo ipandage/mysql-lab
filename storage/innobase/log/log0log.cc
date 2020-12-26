@@ -618,6 +618,7 @@ log_group_calc_real_offset(
 /******************************************************//**
 Calculates the offset of an lsn within a log group.
 @return	offset within the log group */
+// 计算日志组中lsn的偏移量
 static
 lsn_t
 log_group_calc_lsn_offset(
@@ -834,6 +835,7 @@ failure:
 
 /******************************************************//**
 Initializes the log. */
+// 初始化日志
 UNIV_INTERN
 void
 log_init(void)

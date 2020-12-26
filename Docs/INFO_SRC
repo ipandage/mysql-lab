@@ -1,7 +1,8 @@
-commit: 259f2ca9477c92b6e9a91cb37dac19d24ffcacd9
-date: 2016-08-26 13:01:54 +0200
-build-date: 2016-08-26 13:22:54 +0200
-short: 259f2ca
-branch: mysql-5.6.33-release
+commit: 152ffe3f0268d4b57edd56a0c3deed61395b57a1
+date: 2020-07-24 10:19:32 +0800
+build-date: 2020-12-21 19:35:54 +0800 
+short: 152ffe3
+branch: master
+
 
 MySQL source 5.6.33

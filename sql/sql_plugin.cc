@@ -1273,6 +1273,7 @@ static void init_plugin_psi_keys(void)
 
   Finally we initialize everything, aka the dynamic that have yet to initialize.
 */
+// 首先加载并初始化所有编译的插件
 int plugin_init(int *argc, char **argv, int flags)
 {
   uint i;

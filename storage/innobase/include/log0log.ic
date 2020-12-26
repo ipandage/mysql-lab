@@ -99,6 +99,7 @@ log_block_get_hdr_no(
 /************************************************************//**
 Sets the log block number stored in the header; NOTE that this must be set
 before the flush bit! */
+// 设置header 中的日志块编号
 UNIV_INLINE
 void
 log_block_set_hdr_no(
@@ -127,6 +128,7 @@ log_block_get_data_len(
 
 /************************************************************//**
 Sets the log block data length. */
+// 设置日志块数据长度
 UNIV_INLINE
 void
 log_block_set_data_len(
@@ -152,6 +154,7 @@ log_block_get_first_rec_group(
 
 /************************************************************//**
 Sets the log block first mtr log record group offset. */
+// 设置日志块第一个mtr日志记录组偏移量
 UNIV_INLINE
 void
 log_block_set_first_rec_group(
@@ -189,6 +192,7 @@ log_block_set_checkpoint_no(
 /************************************************************//**
 Converts a lsn to a log block number.
 @return	log block number, it is > 0 and <= 1G */
+// 将lsn 转换为日志块号
 UNIV_INLINE
 ulint
 log_block_convert_lsn_to_no(

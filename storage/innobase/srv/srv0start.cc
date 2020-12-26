@@ -1528,6 +1528,7 @@ srv_start_wait_for_purge_to_start()
 Starts InnoDB and creates a new database if database files
 are not found and the user wants.
 @return	DB_SUCCESS or error code */
+//InnoDB 初始化流程， 启动InnoDB并在数据库文件中创建新数据库
 UNIV_INTERN
 dberr_t
 innobase_start_or_create_for_mysql(void)

@@ -2920,6 +2920,7 @@ ha_innobase::init_table_handle_for_HANDLER(void)
 /*********************************************************************//**
 Opens an InnoDB database.
 @return	0 on success, error code on failure */
+// 打开InnoDb数据库
 static
 int
 innobase_init(

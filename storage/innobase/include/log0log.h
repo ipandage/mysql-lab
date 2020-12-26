@@ -572,6 +572,7 @@ extern log_t*	log_sys;
 #define LOG_RECOVER	98887331
 
 /* The counting of lsn's starts from this value: this must be non-zero */
+// lsn的计数从这个值开始：这个值必须是非零的
 #define LOG_START_LSN		((lsn_t) (16 * OS_FILE_LOG_BLOCK_SIZE))
 
 #define LOG_BUFFER_SIZE		(srv_log_buffer_size * UNIV_PAGE_SIZE)
@@ -667,9 +668,9 @@ extern log_t*	log_sys;
 
 
 /* Offsets of a log file header */
-#define LOG_GROUP_ID		0	/* log group number */
+#define LOG_GROUP_ID		0	/* log group number */ // 日志组编号
 #define LOG_FILE_START_LSN	4	/* lsn of the start of data in this
-					log file */
+					log file */ // 这个log文件记录的开始的日志lsn
 #define LOG_FILE_NO		12	/* 4-byte archived log file number;
 					this field is only defined in an
 					archived log file */
@@ -694,6 +695,8 @@ extern log_t*	log_sys;
 					same log block as this lsn; this field
 					is defined only when an archived log
 					file has been completely written */
+
+//
 #define LOG_CHECKPOINT_1	OS_FILE_LOG_BLOCK_SIZE
 					/* first checkpoint field in the log
 					header; we write alternately to the
@@ -710,12 +713,13 @@ extern log_t*	log_sys;
 
 /** Log group consists of a number of log files, each of the same size; a log
 group is implemented as a space in the sense of the module fil0fil. */
+// 日志组由许多相同大小的日志文件组成
 struct log_group_t{
 	/* The following fields are protected by log_sys->mutex */
 	ulint		id;		/*!< log group id */
-	ulint		n_files;	/*!< number of files in the group */
+	ulint		n_files;	/*!< number of files in the group */ // 日志组中的文件个数
 	lsn_t		file_size;	/*!< individual log file size in bytes,
-					including the log file header */
+					including the log file header */ // 文件大小
 	ulint		space_id;	/*!< file space which implements the log
 					group */
 	ulint		state;		/*!< LOG_GROUP_OK or
@@ -762,13 +766,14 @@ struct log_group_t{
 };
 
 /** Redo log buffer */
+// Redo 日志
 struct log_t{
 	byte		pad[64];	/*!< padding to prevent other memory
 					update hotspots from residing on the
 					same memory cache line */
-	lsn_t		lsn;		/*!< log sequence number */
+	lsn_t		lsn;		/*!< log sequence number */ // 日志序列号 单调递增
 	ulint		buf_free;	/*!< first free offset within the log
-					buffer */
+					buffer */ // 当前 log_buffer 空闲空间起始位置
 #ifndef UNIV_HOTBACKUP
 	ib_mutex_t		mutex;		/*!< mutex protecting the log */
 
@@ -851,6 +856,7 @@ struct log_t{
 	lsn_t		current_flush_lsn;/*!< end lsn for the current running
 					write + flush operation */
 	lsn_t		flushed_to_disk_lsn;
+	// 已经刷到 redo log file 的 lsn
 					/*!< how far we have written the log
 					AND flushed to disk */
 	ulint		n_pending_writes;/*!< number of currently
@@ -916,6 +922,7 @@ struct log_t{
 	ib_uint64_t	next_checkpoint_no;
 					/*!< next checkpoint number */
 	lsn_t		last_checkpoint_lsn;
+	// 最近执行检查点的 lsn
 					/*!< latest checkpoint lsn */
 	lsn_t		next_checkpoint_lsn;
 					/*!< next checkpoint lsn */
